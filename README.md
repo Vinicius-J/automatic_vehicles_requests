@@ -18,10 +18,10 @@ Fazer o fluxo atual funcionar de maneira previsível antes de adicionar qualquer
 - [x] Corrigir leitura A2:E vs 6 colunas
 - [x] Corrigir busca da planilha atual
 - [x] Definir comportamento para lista vazia de SARAM
-- [ ] Corrigir nomes dos erros
-- [ ] Remover erros duplicados
+- [x] Corrigir nomes dos erros
+- [x] Remover erros duplicados
 - [x] Fazer o projeto compilar limpo
-- [ ] Fazer o fluxo completo manualmente
+- [x] Fazer o fluxo completo manualmente
 
 # 🔴 Sprint 2 — Domínio e Use Case
 
