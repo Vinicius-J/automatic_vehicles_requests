@@ -31,8 +31,8 @@ Tirar a regra de negócio de dentro da automação.
 
 - [x] Criar CreateVehicleRequest
 - [x] Separar DTO de domínio
-- [ ] Criar VehicleRequest
-- [ ] Criar VehicleRequestResult
+- [x] Criar VehicleRequest
+- [x] Criar VehicleRequestResult
 - [x] Criar interface da automação
 - [x] Criar interface do repository
 - [x] Fazer Use Case depender apenas de abstrações
