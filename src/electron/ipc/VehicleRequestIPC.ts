@@ -9,7 +9,7 @@ export const vehicleRequestIPC = () =>
     if (!zResult.success) {
       return {
         isSuccessful: false,
-        message: "Incorrect data input",
+        message: "Entrada de dados incorreta",
         result: null,
       };
     }
@@ -19,7 +19,7 @@ export const vehicleRequestIPC = () =>
       const requestResult = await vehicleRequestUseCase.execute(zResult.data);
       return {
         isSuccessful: true,
-        message: "Successfully submitted requests",
+        message: "Solicitações enviadas com sucesso",
         result: requestResult,
       };
     } catch (err) {
@@ -32,7 +32,7 @@ export const vehicleRequestIPC = () =>
       }
       return {
         isSuccessful: false,
-        message: "Internal error",
+        message: "Erro interno",
         result: null,
       };
     }
