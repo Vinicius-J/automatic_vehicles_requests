@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="Content-Security-Policy"
+    content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline';" />
+  <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reserva de Veículos Automática</title>
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+
+<body>
+
+  <section class="formulario">
+    <h2>Dados do Pedido</h2>
+
+    <form id="form-pedido">
+      <p>Data de início do pedido</p>
+      <input type="date" id="startDay" name="startDay" value="2030-11-01" />
+      <span>A data de início não pode ser menor que 48 horas ou maior que a data de término.</span>
+
+      <p>Data de término do pedido</p>
+      <input type="date" id="lastDay" name="lastDay" value="2030-11-05" />
+      <span>A data de término não pode ser menor que 48 horas ou menor que a data de início.</span>
+
+      <p>Especificação do Material</p>
+      <textarea id="txMaterial" name="txMaterial">Especificação do Material</textarea>
+      <span>O campo de expecificação da missão não pode estar vazio.</span>
+
+      <p>Hora de embarque</p>
+      <input type="time" id="itHoraEmbarque" name="itHoraEmbarque" value="07:00" />
+      <span>O campo de não hora da missão pode estar vazio.</span>
+
+      <p>Logradouro de destino</p>
+      <input type="text" id="txLogradouroDest" name="txLogradouroDest" value="Logradouro de destino" />
+      <span>O campo de logradouro de destino da missão não pode estar
+        vazio.</span>
+
+      <p>Número</p>
+      <input type="text" id="nrLogradouroDest" name="nrLogradouroDest" value="Número" />
+      <span>O campo de número do logradouro missão não pode estar vazio.</span>
+
+      <p>Bairro</p>
+      <input type="text" id="txBairroDest" name="txBairroDest" value="Bairro" />
+      <span>O campo de bairro de destino da missão não pode estar vazio.</span>
+
+      <p>Estado</p>
+      <input type="text" id="estdest" name="estdest" value="Minas Gerais" />
+      <span>O campo de estado de destino missão não pode estar vazio.</span>
+
+      <p>Cidade</p>
+      <input type="text" id="ciddest" name="ciddest" value="Barbacena" />
+      <span>O campo de cidade de destino da missão não pode estar vazio.</span>
+
+      <p>Observação da Missão</p>
+      <textarea id="itObservaçãoSolicMissao" name="itObservaçãoSolicMissao">Observação da Missão</textarea>
+      <span>O campo de observações da missão não pode estar vazio.</span>
+
+      <input id="inpItNrOrdemHidden" type="hidden" name="itnrOrdem" />
+      <span>A tabela de saram deve conter 1 item no minímo.</span>
+      <button id="btnSubmit" type="submit">Fazer pedido</button>
+
+    </form>
+
+    <section>
+      <h4 id="request-result"></h4>
+    </section>
+
+  </section>
+
+  <section>
+    <h3 id="info"></h3>
+  </section>
+
+  <script src="../script.js"></script>
+
+</body>
+
+</html>
