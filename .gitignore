@@ -1,0 +1,14 @@
+.env
+/node_modules
+/release
+/dist
+example
+credentials.json
+automatic_commits.sh
+
+# Playwright
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+/playwright/.auth/

@@ -1,0 +1,44 @@
+{
+  "name": "automatic_vehicles_requests",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/electron/electronApp.js",
+  "scripts": {
+    "build:backend": "tsc",
+    "build:electron": "electron-builder",
+    "build": "npm run build:backend && npm run build:electron",
+    "start:server": "node dist/backend/server.js",
+    "start:electron": "tsc && electron .",
+    "dev": "nodemon --exec npx tsx src/backend/server.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": {
+    "name": "Vinicius-J",
+    "email": "viniciusjoaquimdossantos@gmail.com"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@playwright/test": "^1.58.2",
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.6",
+    "@types/node": "^25.3.0",
+    "concurrently": "^10.0.3",
+    "electron": "^43.4.1",
+    "electron-builder": "^26.15.3",
+    "nodemon": "^3.1.11",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3",
+    "wait-on": "^9.0.10"
+  },
+  "dependencies": {
+    "cors": "^2.8.6",
+    "dotenv": "^17.3.1",
+    "express": "^5.2.1",
+    "google-auth-library": "^10.5.0",
+    "googleapis": "^171.4.0",
+    "pino": "^10.3.1",
+    "playwright": "^1.58.2",
+    "zod": "^4.4.3"
+  }
+}

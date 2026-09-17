@@ -1,0 +1,32 @@
+appId: com.vinicius.request
+
+productName: Automatic Vehicle Request
+
+directories:
+  output: release
+
+files:
+  - dist/**
+  - src/frontend/**
+  - package.json
+  - credentials.json
+  - .env
+
+extraResources:
+  - from: node_modules/playwright
+    to: node_modules/playwright
+
+  - from: node_modules/playwright-core
+    to: node_modules/playwright-core
+
+  -from: credentials.json
+    to: credentials.json
+
+  -from: .env
+    to: .env
+
+linux:
+  target:
+    - AppImage
+    - deb
+    - rpm
