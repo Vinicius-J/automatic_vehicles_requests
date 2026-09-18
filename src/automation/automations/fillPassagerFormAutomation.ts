@@ -4,29 +4,24 @@ import {
   PassagerPageAutomation,
   PassagerFormRecord,
 } from "../../core/interfaces/PassagerProtocol";
-import { AutomationTimeoutError } from "../../core/errors/automationErrors/AutomationTimeoutError";
 
 export async function fillPassagerFormAutomation(
   page: Page,
   passagerObj: PassagerPageAutomation,
 ): Promise<PassagerFormRecord> {
-  try {
-    const nrMissaoText = await page.locator("#formModalPassageiros\\:nrMissao");
-    const nrMissionText = await nrMissaoText.textContent();
-    passagerObj.nrMissao = nrMissionText!.split(" ")[3];
-    await page
-      .locator("#formModalPassageiros\\:itnrOrdem")
-      .fill(passagerObj.itnrOrdem);
-    await page.locator("#formModalPassageiros\\:btIncluirPass").click();
-    await page
-      .locator("#formModalPassageiros\\:cbAssociarPassageirosAvaliacao")
-      .click();
+  const nrMissaoText = await page.locator("#formModalPassageiros\\:nrMissao");
+  const nrMissionText = await nrMissaoText.textContent();
+  passagerObj.nrMissao = nrMissionText!.split(" ")[3];
+  await page
+    .locator("#formModalPassageiros\\:itnrOrdem")
+    .fill(passagerObj.itnrOrdem);
+  await page.locator("#formModalPassageiros\\:btIncluirPass").click();
+  await page
+    .locator("#formModalPassageiros\\:cbAssociarPassageirosAvaliacao")
+    .click();
 
-    return {
-      nrMissao: passagerObj.nrMissao,
-      itnrOrder: passagerObj.itnrOrdem,
-    };
-  } catch (err) {
-    throw new AutomationTimeoutError();
-  }
+  return {
+    nrMissao: passagerObj.nrMissao,
+    itnrOrder: passagerObj.itnrOrdem,
+  };
 }
