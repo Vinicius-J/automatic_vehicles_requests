@@ -6,7 +6,7 @@ import {
   VehicleRequestAutomationProtocol,
   VehicleRequestAutomationResult,
 } from "../../core/interfaces/VehicleAutomationProtocol";
-import { BrowserProtocol } from "../../core/repositories/BrowserProtocol";
+import { PlaywrightProtocol } from "../../core/repositories/PlaywrightProtocol";
 import { createLoginObj } from "../factories/createLoginObj";
 import { createPassagerObj } from "../factories/createPassagerObj";
 import { createVehicleObj } from "../factories/createVehicleObj";
@@ -15,7 +15,7 @@ import { calculateTotalRequests } from "../utils/calculateTotalRequests";
 import { getNextItnOrder } from "../utils/getNextItnOrder";
 
 export class VehicleRequestAutomation implements VehicleRequestAutomationProtocol {
-  constructor(private readonly browser: BrowserProtocol) {}
+  constructor(private readonly browser: PlaywrightProtocol) {}
   async execute({
     request,
     sarams,

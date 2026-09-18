@@ -1,8 +1,8 @@
 import { Browser, chromium, Page } from "playwright";
 
-import { BrowserProtocol } from "../../core/repositories/BrowserProtocol";
+import { PlaywrightProtocol } from "../../core/repositories/PlaywrightProtocol";
 
-export class PlaywrightBrowserManager implements BrowserProtocol {
+export class PlaywrightBrowserManager implements PlaywrightProtocol {
   private _browser: Browser | null = null;
   private _page: Page | null = null;
 
