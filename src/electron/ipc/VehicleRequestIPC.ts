@@ -9,7 +9,7 @@ export const vehicleRequestIPC = () =>
     if (!zResult.success) {
       return {
         isSuccessful: false,
-        message: "Entrada de dados incorreta",
+        message: zResult.error.issues[0].message,
         result: null,
       };
     }
