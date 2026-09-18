@@ -2,6 +2,6 @@ import { AppError } from "../AppError";
 
 export class SpreadsheetsTitleNotFound extends AppError {
   constructor() {
-    super("Título de planilha não encontrado", 404);
+    super("Título de planilhas não encontrados", 404);
   }
 }
