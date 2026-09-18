@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-export const RequestSchema = z
+export const VehicleRequestSchema = z
   .object({
     ciddest: z.string().trim().nonempty(),
     estdest: z.string().trim(),

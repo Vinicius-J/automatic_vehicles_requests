@@ -1,11 +1,11 @@
 import { ipcMain } from "electron";
-import { RequestSchema } from "../../schemas/RequestSchema";
+import { VehicleRequestSchema } from "../../schemas/VehicleRequestSchema";
 import { makeCreateVehicleRequestUseCase } from "../../automation/factories/makeCreateVehicleRequestUseCase";
 import { AppError } from "../../core/errors/AppError";
 
 export const vehicleRequestIPC = () =>
   ipcMain.handle("vehicleRequestIPC", async (_, body) => {
-    const zResult = RequestSchema.safeParse(body);
+    const zResult = VehicleRequestSchema.safeParse(body);
     if (!zResult.success) {
       return {
         isSuccessful: false,

@@ -1,5 +1,5 @@
 import { z } from "zod";
 
-import { RequestSchema } from "../../schemas/RequestSchema";
+import { VehicleRequestSchema } from "../../schemas/VehicleRequestSchema";
 
-export type VehicleRequestDTO = z.infer<typeof RequestSchema>;
+export type VehicleRequestDTO = z.infer<typeof VehicleRequestSchema>;
