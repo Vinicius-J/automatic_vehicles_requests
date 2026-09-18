@@ -2,7 +2,7 @@ import { Browser, chromium, Page } from "playwright";
 
 import { BrowserProtocol } from "../../core/repositories/BrowserProtocol";
 
-export class BrowserManager implements BrowserProtocol {
+export class PlaywrightBrowserManager implements BrowserProtocol {
   private _browser: Browser | null = null;
   private _page: Page | null = null;
 
@@ -26,11 +26,12 @@ export class BrowserManager implements BrowserProtocol {
   }
 
   async dispose() {
+    if (!this._browser) return;
     if (!this._page) return;
+
     await this._page.close();
     this._page = null;
 
-    if (!this._browser) return;
     await this._browser.close();
     this._browser = null;
   }

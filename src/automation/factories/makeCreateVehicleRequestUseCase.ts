@@ -1,11 +1,11 @@
 import { InGoogleSheetsVehicleRequestRepository } from "../../infrastructure/repositories/InGoogleSheetsVehicleRequestRepository";
-import { BrowserManager } from "../../infrastructure/playwright/BrowserManager";
+import { PlaywrightBrowserManager } from "../../infrastructure/playwright/PlaywrightBrowserManager";
 import { CreateVehicleRequestUseCase } from "../useCases/CreateVehicleRequestUseCase";
 import { VehicleRequestAutomation } from "../automations/VehicleRequestAutomation";
 
 export function makeCreateVehicleRequestUseCase() {
   const repository = new InGoogleSheetsVehicleRequestRepository();
-  const browser = new BrowserManager();
+  const browser = new PlaywrightBrowserManager();
   const automation = new VehicleRequestAutomation(browser);
 
   return new CreateVehicleRequestUseCase(automation, repository);
