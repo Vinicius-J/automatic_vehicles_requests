@@ -21,7 +21,8 @@ export const RequestSchema = z
       return startDay <= lastDay;
     },
     {
-      message: "startDay cannot be greater than lastDay",
+      message:
+        "Dia de início não pode ser maior que o dia de término do pedido",
       path: ["lastDay"],
     },
   );
