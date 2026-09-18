@@ -1,6 +1,6 @@
 import { VehicleRequestAutomationResult } from "../../core/interfaces/VehicleAutomationProtocol";
 
-export class RequestMapper {
+export class VehicleRequestMapper {
   static toPersistence(result: VehicleRequestAutomationResult): string[][] {
     return result.records.map((record) => [
       record.requestedAt,

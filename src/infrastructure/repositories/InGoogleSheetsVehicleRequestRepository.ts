@@ -9,7 +9,7 @@ import { SpreadsheetsIdNotFound } from "../../core/errors/repositoryErrors/Sprea
 import { getSpreadsheetTitle } from "../utils/getSpreadsheetTitle";
 import { SpreadsheetsTitleNotFound } from "../../core/errors/repositoryErrors/SpreadsheetsTitlesNotFound";
 import { VehicleRequestAutomationResult } from "../../core/interfaces/VehicleAutomationProtocol";
-import { RequestMapper } from "../mappers/RequestMapper";
+import { VehicleRequestMapper } from "../mappers/VehicleRequestMapper";
 
 export class InGoogleSheetsVehicleRequestRepository implements VehicleRequestRepository {
   private readonly sheets = new GoogleSheets().sheets();
@@ -20,7 +20,7 @@ export class InGoogleSheetsVehicleRequestRepository implements VehicleRequestRep
   }
 
   async save(records: VehicleRequestAutomationResult): Promise<void> {
-    const values = RequestMapper.toPersistence(records);
+    const values = VehicleRequestMapper.toPersistence(records);
     const range = await this.getLastSheetTitle();
 
     await this.sheets.spreadsheets.values.append({
