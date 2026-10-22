@@ -1,6 +1,6 @@
 import { EMonthString } from "../../core/enums/EMonthString";
 
-export function getSpreadsheetTitle(month?: number) {
+export function getTableTitle(month?: number) {
   const date = new Date();
   const year = date.getFullYear().toString();
   const currentMonth = date.getMonth();

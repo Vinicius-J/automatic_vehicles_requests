@@ -1,30 +1,28 @@
 import { env } from "../../core/config/env";
 
-import { GoogleSheets } from "../googleSheets/GoogleSheets";
+import GoogleSheetsConnection from "../googleSheets/GoogleSheetsConnection";
 import { VehicleRequestRepository } from "../../core/repositories/VehicleRequestRepository";
 
 import { SpreadsheetsNotFound } from "../../core/errors/repositoryErrors/SpreadsheetsNotFound";
 import { SpreadsheetsIdNotFound } from "../../core/errors/repositoryErrors/SpreadsheetsIdNotFound";
 
-import { getSpreadsheetTitle } from "../utils/getSpreadsheetTitle";
+import { getTableTitle } from "../utils/getTableTitle";
 import { SpreadsheetsTitleNotFound } from "../../core/errors/repositoryErrors/SpreadsheetsTitlesNotFound";
 import { VehicleRequestAutomationResult } from "../../core/interfaces/VehicleAutomationProtocol";
 import { VehicleRequestMapper } from "../mappers/VehicleRequestMapper";
 
-export class InGoogleSheetsVehicleRequestRepository implements VehicleRequestRepository {
-  private readonly sheets = new GoogleSheets().sheets();
-  private readonly _SPREADSHEET_ID = env.SPREADSHEET_ID;
+const spreadsheetId = env.SPREADSHEET_ID;
+if (!spreadsheetId) throw new SpreadsheetsIdNotFound();
 
-  constructor() {
-    if (!this._SPREADSHEET_ID) throw new SpreadsheetsIdNotFound();
-  }
+export class InGoogleSheetsVehicleRequestRepository implements VehicleRequestRepository {
+  private readonly sheets = GoogleSheetsConnection.connectAtSpreadsheet();
 
   async save(records: VehicleRequestAutomationResult): Promise<void> {
     const values = VehicleRequestMapper.toPersistence(records);
-    const range = await this.getLastSheetTitle();
+    const range = await this.getLastTableTitle();
 
     await this.sheets.spreadsheets.values.append({
-      spreadsheetId: this._SPREADSHEET_ID,
+      spreadsheetId: spreadsheetId,
       range,
       valueInputOption: "USER_ENTERED",
       requestBody: {
@@ -34,10 +32,10 @@ export class InGoogleSheetsVehicleRequestRepository implements VehicleRequestRep
   }
 
   async findRequests(month?: number): Promise<string[][] | undefined> {
-    const title = getSpreadsheetTitle(month);
+    const title = getTableTitle(month);
 
     const _result = await this.sheets.spreadsheets.values.get({
-      spreadsheetId: this._SPREADSHEET_ID,
+      spreadsheetId: spreadsheetId,
       range: `${title}!A2:F`,
     });
 
@@ -50,7 +48,7 @@ export class InGoogleSheetsVehicleRequestRepository implements VehicleRequestRep
 
   async findSarams(): Promise<string[] | undefined> {
     const _sarams = await this.sheets.spreadsheets.values.get({
-      spreadsheetId: this._SPREADSHEET_ID,
+      spreadsheetId: spreadsheetId,
       range: "SARAMS!A2:B",
     });
 
@@ -64,27 +62,27 @@ export class InGoogleSheetsVehicleRequestRepository implements VehicleRequestRep
     return arrOrders;
   }
 
-  async getLastSheetTitle() {
+  async getLastTableTitle() {
     const metadata = await this.sheets.spreadsheets.get({
-      spreadsheetId: this._SPREADSHEET_ID,
+      spreadsheetId: spreadsheetId,
     });
 
     if (!metadata.data.sheets) throw new SpreadsheetsTitleNotFound();
 
-    const lastSheetTitle =
+    const lastTableTitle =
       metadata.data.sheets[metadata.data.sheets.length - 1].properties?.title;
 
-    const sheetTitle = getSpreadsheetTitle();
+    const tableTitle = getTableTitle();
 
-    if (lastSheetTitle === sheetTitle) return lastSheetTitle;
+    if (lastTableTitle === tableTitle) return lastTableTitle;
 
-    await this.createNewSpreadsheets(sheetTitle);
-    return sheetTitle;
+    await this.createTable(tableTitle);
+    return tableTitle;
   }
 
-  async createNewSpreadsheets(title: string) {
+  async createTable(title: string) {
     await this.sheets.spreadsheets.batchUpdate({
-      spreadsheetId: this._SPREADSHEET_ID,
+      spreadsheetId: spreadsheetId,
       requestBody: {
         requests: [
           {
