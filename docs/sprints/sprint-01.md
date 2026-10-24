@@ -2,11 +2,11 @@
 
 ## 1. Informações gerais
 
-- Projeto: **Automatic Vehicles Requests**
-- Número da sprint: **01**
-- Data de início: **A definir**
-- Data de término: **A definir**
-- Status: **Em análise**
+- **Projeto:** Automatic Vehicles Requests
+- **Número da sprint:** 01
+- **Data de início:** A definir
+- **Data de término:** A definir
+- **Status:** Em análise
 
 ## 2. Objetivo da sprint
 
