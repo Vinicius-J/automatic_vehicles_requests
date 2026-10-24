@@ -1,4 +1,5 @@
 # Automatic Vehicle Request
+
 ## Documento de Escopo do Projeto — Versão 1.0
 
 **Status:** Escopo preliminar consolidado  
@@ -410,18 +411,18 @@ O sistema deverá evitar duplicidades, perda de progresso e repetição automát
 
 A análise preliminar do repositório indica que existem componentes que podem ser preservados e evoluídos.
 
-| Componente ou capacidade | Direção |
-|---|---|
-| Electron e interface desktop | Reaproveitar |
-| Automação com Playwright | Reaproveitar e validar no sistema original |
-| Validação com Zod | Ampliar conforme o formulário real |
-| Geração de datas | Revisar a inclusão das datas inicial e final |
-| Seleção de SARAMs pelo Google Sheets | Preservar a regra atual e reforçar validações |
-| Integração de saída com Google Sheets | Evoluir para persistência individual e recuperação |
-| Fluxo e automações separados | Preservar a separação e melhorar o tratamento de erros |
-| Página HTML local de exemplo | Manter como ambiente de testes |
-| Empacotamento Linux | Revisar e validar em ambiente distribuído |
-| Testes automatizados | Implementar e ampliar |
+| Componente ou capacidade              | Direção                                                |
+| ------------------------------------- | ------------------------------------------------------ |
+| Electron e interface desktop          | Reaproveitar                                           |
+| Automação com Playwright              | Reaproveitar e validar no sistema original             |
+| Validação com Zod                     | Ampliar conforme o formulário real                     |
+| Geração de datas                      | Revisar a inclusão das datas inicial e final           |
+| Seleção de SARAMs pelo Google Sheets  | Preservar a regra atual e reforçar validações          |
+| Integração de saída com Google Sheets | Evoluir para persistência individual e recuperação     |
+| Fluxo e automações separados          | Preservar a separação e melhorar o tratamento de erros |
+| Página HTML local de exemplo          | Manter como ambiente de testes                         |
+| Empacotamento Linux                   | Revisar e validar em ambiente distribuído              |
+| Testes automatizados                  | Implementar e ampliar                                  |
 
 A análise do código também identificou pontos que merecem atenção antes de considerar o projeto pronto para uso real:
 
@@ -439,16 +440,16 @@ Esses pontos são achados preliminares da inspeção do código, não resultados
 
 # 10. Riscos identificados
 
-| Risco | Impacto | Direção de mitigação |
-|---|---|---|
-| Atrasos ou falhas do site | Interrupção do fluxo | Esperas baseadas no estado da página e tratamento explícito de erros |
-| Confirmação com resultado desconhecido | Solicitação duplicada | Consulta antes de repetir |
-| Falha na API do Google Sheets | Perda de rastreabilidade | Persistência individual e recuperação de registros pendentes |
-| Sessão expirada | Falha de autenticação | Pausar e solicitar intervenção do usuário |
-| Alteração da lista de SARAMs | Divergência da prévia | Revalidar antes da execução |
-| Seletores incompatíveis | Falha de automação | Validar no sistema original |
-| Empacotamento inadequado | Aplicativo não inicia em outro computador | Testes de distribuição |
-| Credenciais incluídas no pacote | Exposição de informações sensíveis | Rever a configuração e o armazenamento de segredos |
+| Risco                                  | Impacto                                   | Direção de mitigação                                                 |
+| -------------------------------------- | ----------------------------------------- | -------------------------------------------------------------------- |
+| Atrasos ou falhas do site              | Interrupção do fluxo                      | Esperas baseadas no estado da página e tratamento explícito de erros |
+| Confirmação com resultado desconhecido | Solicitação duplicada                     | Consulta antes de repetir                                            |
+| Falha na API do Google Sheets          | Perda de rastreabilidade                  | Persistência individual e recuperação de registros pendentes         |
+| Sessão expirada                        | Falha de autenticação                     | Pausar e solicitar intervenção do usuário                            |
+| Alteração da lista de SARAMs           | Divergência da prévia                     | Revalidar antes da execução                                          |
+| Seletores incompatíveis                | Falha de automação                        | Validar no sistema original                                          |
+| Empacotamento inadequado               | Aplicativo não inicia em outro computador | Testes de distribuição                                               |
+| Credenciais incluídas no pacote        | Exposição de informações sensíveis        | Rever a configuração e o armazenamento de segredos                   |
 
 ---
 
